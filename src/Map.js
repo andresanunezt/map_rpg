@@ -3,80 +3,73 @@ const Monster = require("./Monster")
 const Player = require("./Player")
 
 class Map {
+    
+    constructor() {
+        
+        this.map = []
+        this.characters = []
+        this.collisionStatus = false
+
+        this.createMonsters()
+        this.createPlayer()
 
 
+        console.log("")
+        console.log("Map has been generated.")
+        console.log("")
 
-
-constructor() {
-
-this.map = []
-this.characters = []
-
-this.createMonsters()
-this.createPlayer()
-
-
-console.log("")
-console.log("Map has been generated.")
-console.log("")
-// console.log("Monsters:", Monster.all)
 
 }
 
 
 
 
-generateMap() {
+    generateMap() {
 
 
-const mapBlueprint = [
-                        [0, 0, 0, 0 ],
-                        [0, 0, 0, 0 ], 
-                        [0, 0, 0, 0 ], 
-                        [0, 0, 0, 0 ] 
-                    ]
+        const mapBlueprint = [
+                                [0, 0, 0, 0 ],
+                                [0, 0, 0, 0 ], 
+                                [0, 0, 0, 0 ], 
+                                [0, 0, 0, 0 ] 
+                            ]
            
 
-    mapBlueprint.forEach((array) => {
-        this.map.push(array)   
+            mapBlueprint.forEach((array) => {
+            this.map.push(array)   
     
-    });
+            });
 
-console.log('')
+            console.log('')
 
-this.map.forEach((array) => {
+            this.map.forEach((array) => {
             
-            console.log(array)
-        })
+                console.log(array)
+            
+            })
 
-console.log('')
+            console.log('')
 
-// this.spawn()
-
-}
-
-
-spawn(){
-
-console.log("Spawned")
-console.log("")
+    }
 
 
+    spawn(){
+
+        console.log("Spawned")
+        console.log("")
 
 
-        
-            let characters = this.characters
-            let array = this.map
+        let characters = this.characters
+        let array = this.map
 
-                for (let j = 0; j < characters.length; j++) {
+            for (let j = 0; j < characters.length; j++) {
                
-                
                 const randomNumber = Math.floor(Math.random() * 4)
                 const randomNumber2 = Math.floor(Math.random() * 4)
 
-                
-                // let randomChar = characters[j].name
-                let randomChar = characters[j]
+                 // let randomChar = characters[j].name
+                 
+                 let randomChar = characters[j]
 
                 if (array[randomNumber][randomNumber2].name === "M" && randomChar.name === "P"){
                     const monster = array[randomNumber][randomNumber2]
@@ -111,16 +104,17 @@ console.log("")
 
 // })
 
- this.map.forEach((array) => {
+        this.map.forEach((array) => {
                      
 
     //  array.forEach((index) => {
 
     //      if (typeof index === "object"){
-    //         //  array[index] = index["name"];
+             
+    //         array[index] = index["name"];
     //         console.log("obj:", index["name"])
     //         console.log("array[index]:", array)
-    //         // console.log("index:", index.name)
+    //         //console.log("index:", index.name)
     //      }
 
     //     // console.log("arrays:", index)
@@ -128,81 +122,88 @@ console.log("")
 
     //  })
 
-        console.log(array)
-    })
+            console.log(array)
+        })
 
-}
+    }
 
-reset(){
+    reset(){
     
-    console.log("")
-    console.log("reset")
-    console.log("")
+        console.log("")
+        console.log("reset")
+        console.log("")
 
-        for (let i = 0; i < this.map.length; i++){
-        
-            let array = this.map
+            for (let i = 0; i < this.map.length; i++){
+                
+                let array = this.map
+                    
+                    for (let j = 0; j < array[i].length; j++) {
+                        array[i][j] = 0
 
-                for (let j = 0; j < array[i].length; j++) {
-               
-                array[i][j] = 0
-            
                 }   
-        }
+            }
         
         
-    this.map.forEach((array) => {
+        this.map.forEach((array) => {
                      
-        console.log(array)
-    })
+            console.log(array)
+        })
 
-    console.log("")
-    console.log("Map has been reset")
+        console.log("")
+        console.log("Map has been reset")
 
 
     
-}
+    }
 
 
 
-printMap() {
+    printMap() {
 
-    this.map.forEach((array) => {
+        this.map.forEach((array) => {
+            console.log(array)
+        })
+    }
 
-        console.log(array)
-    })
-
-}
-
-createMonsters(){
+    createMonsters(){
         let monsters = []
 
         for(let i = 0; i < 6; i++) {
 
             // monsters[i] = new Monster(`M${[i + 1]}`)
             monsters[i] = new Monster(`M`)
-            console.log(monsters[i])
+            // console.log(monsters[i])
             this.characters.push(monsters[i])
         }
-}
+    }
 
 
-createPlayer(){
+    createPlayer(){
 
-
-       const player = new Player("P");
+        const player = new Player("P");
         this.characters.push(player)        
 
-}
+    }
 
 
-battle(player,monster) {
+    battle(player,monster) {
 
-console.log(`${player.name} and ${monster.name} are battling`)
-console.log("monster:",monster )
-console.log("player:",player )
+        this.collisionStatus = true
+        console.log("")
+        console.log("There's a colllision!")
+        console.log(`${player.name} and ${monster.name} are battling`)
+        console.log("monster:",monster )
+        console.log("player:",player )
+        console.log("")
 
-}
+        const pAttack = player.randomAttack()
+        const mAttack = monster.randomAttack()
+
+        console.log(pAttack)
+        console.log(mAttack)
+
+
+    }
 
 }
 
