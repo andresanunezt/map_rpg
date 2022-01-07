@@ -83,7 +83,7 @@ console.log("")
                     const player = randomChar
 
                     this.battle(player, monster)
-
+                    array[randomNumber][randomNumber2] = "collided"
                     
                     // console.log("index:",array[randomNumber][randomNumber2])
                     // console.log("character:", randomChar)
@@ -175,8 +175,7 @@ printMap() {
 }
 
 createMonsters(){
-
-    let monsters = []
+        let monsters = []
 
         for(let i = 0; i < 6; i++) {
 
@@ -185,28 +184,23 @@ createMonsters(){
             console.log(monsters[i])
             this.characters.push(monsters[i])
         }
-
-
-
 }
+
 
 createPlayer(){
 
-    
+
        const player = new Player("P");
-        this.characters.push(player)
-            
-        
-
-
+        this.characters.push(player)        
 
 }
 
 
 battle(player,monster) {
 
-console.log("player:", player)
+console.log(`${player.name} and ${monster.name} are battling`)
 console.log("monster:",monster )
+console.log("player:",player )
 
 }
 
