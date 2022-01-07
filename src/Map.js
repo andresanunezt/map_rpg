@@ -67,7 +67,6 @@ class Map {
                 const randomNumber = Math.floor(Math.random() * 4)
                 const randomNumber2 = Math.floor(Math.random() * 4)
 
-                 // let randomChar = characters[j].name
                  
                  let randomChar = characters[j]
 
@@ -75,17 +74,15 @@ class Map {
                     const monster = array[randomNumber][randomNumber2]
                     const player = randomChar
 
-                    this.battle(player, monster)
-                    array[randomNumber][randomNumber2] = "collided"
+                    const result = this.battle(player, monster)
+               
+                    array[randomNumber][randomNumber2] = result
                     
-                    // console.log("index:",array[randomNumber][randomNumber2])
-                    // console.log("character:", randomChar)
-                    // console.log("")
+                   
                     
                     
                 } else {
-                // console.log(array[randomNumber][randomNumber2])
-                // array[randomNumber][randomNumber2] = randomChar.name
+               
                 array[randomNumber][randomNumber2] = randomChar
                 
                 }
@@ -103,25 +100,24 @@ class Map {
 //     console.log(array)
 
 // })
+        console.log("")
+            console.log("")
+            console.log("MAP:")
 
         this.map.forEach((array) => {
                      
-
-    //  array.forEach((index) => {
-
-    //      if (typeof index === "object"){
-             
-    //         array[index] = index["name"];
-    //         console.log("obj:", index["name"])
-    //         console.log("array[index]:", array)
-    //         //console.log("index:", index.name)
-    //      }
-
-    //     // console.log("arrays:", index)
+            for (let i = 0; i < array.length; i++) {
 
 
-    //  })
+                if (typeof array[i] === "object"){
 
+                        array[i] = array[i].name
+
+                }
+                    
+            }
+            
+            
             console.log(array)
         })
 
@@ -191,17 +187,35 @@ class Map {
         this.collisionStatus = true
         console.log("")
         console.log("There's a colllision!")
+        console.log("")
         console.log(`${player.name} and ${monster.name} are battling`)
-        console.log("monster:",monster )
-        console.log("player:",player )
         console.log("")
 
         const pAttack = player.randomAttack()
         const mAttack = monster.randomAttack()
 
-        console.log(pAttack)
-        console.log(mAttack)
 
+        if(pAttack.value > mAttack.value){
+            console.log("")
+            console.log(`Player won the battle`)
+            console.log("")
+            return player
+        }
+
+        if(mAttack.value > pAttack.value){
+            console.log("")
+            console.log(`Monster won the battle`)
+            console.log("")
+            return monster
+        }
+
+        if (mAttack.value === pAttack.value){
+            console.log("")
+            console.log("it's a draw")
+            return 0
+            console.log("")
+
+        }
 
     }
 

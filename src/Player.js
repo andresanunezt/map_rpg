@@ -5,9 +5,9 @@ class Player {
         this.name = name,
         this.hp = 100,
          this.attacks = [
-                        {attack1: 25},
-                        {attack2: 50},
-                        {attack3: 75}            
+                        {value: 25},
+                        {value: 50},
+                        {value: 75}            
                         ]
     
     }
@@ -15,7 +15,7 @@ class Player {
 
     randomAttack() {
         const randomNum = Math.floor(Math.random() * 3)
-        console.log(this.attacks)
+        // console.log(this.attacks)
         return this.attacks[randomNum]
     }
     
