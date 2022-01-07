@@ -9,5 +9,14 @@ describe('Map Properties', () => {
     })
 
 
+    test("Map has an array", () => {
+		
+        const map = new Map();
+        map.generateMap()
+        expect(map.map.length).toBe(4)
+                    
+    })
+
+
    
 })
