@@ -39,7 +39,10 @@ Create another script that will move the player throughout the map.
 Destroy all monsters to win!
 
 
-SCREENSHOTS
-![](spawn.png)
+SCREENSHOTS:
 
-![](monster_won.png)
+
+
+![spawn_method](spawn.png)
+
+![battle_method](monster_won.png)
