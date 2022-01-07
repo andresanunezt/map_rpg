@@ -75,18 +75,24 @@ console.log("")
                 const randomNumber2 = Math.floor(Math.random() * 4)
 
                 
-                let randomChar = characters[j].name
-                // let randomChar = characters[j]
+                // let randomChar = characters[j].name
+                let randomChar = characters[j]
 
-                if (array[randomNumber][randomNumber2] === "M" && randomChar.name === "P"){
+                if (array[randomNumber][randomNumber2].name === "M" && randomChar.name === "P"){
+                    const monster = array[randomNumber][randomNumber2]
+                    const player = randomChar
+
+                    this.battle(player, monster)
+
                     
-                    console.log("index:",array[randomNumber][randomNumber2])
-                    console.log("character:", randomChar)
-                    console.log("")
-                    array[randomNumber][randomNumber2] = "collided"
+                    // console.log("index:",array[randomNumber][randomNumber2])
+                    // console.log("character:", randomChar)
+                    // console.log("")
+                    
                     
                 } else {
                 // console.log(array[randomNumber][randomNumber2])
+                // array[randomNumber][randomNumber2] = randomChar.name
                 array[randomNumber][randomNumber2] = randomChar
                 
                 }
@@ -107,6 +113,21 @@ console.log("")
 
  this.map.forEach((array) => {
                      
+
+    //  array.forEach((index) => {
+
+    //      if (typeof index === "object"){
+    //         //  array[index] = index["name"];
+    //         console.log("obj:", index["name"])
+    //         console.log("array[index]:", array)
+    //         // console.log("index:", index.name)
+    //      }
+
+    //     // console.log("arrays:", index)
+
+
+    //  })
+
         console.log(array)
     })
 
@@ -184,7 +205,8 @@ createPlayer(){
 
 battle(player,monster) {
 
-
+console.log("player:", player)
+console.log("monster:",monster )
 
 }
 
