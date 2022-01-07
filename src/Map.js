@@ -90,20 +90,10 @@ class Map {
             }   
         
 
-// this.map.forEach((array) =>{
-
-//     const randomNumber = Math.floor(Math.random() * 4)
-//     const randomNumber2 = Math.floor(Math.random() * 4)
-
-
-//     array[randomNumber] = Map.characters[randomNumber2].name
-//     console.log(array)
-
-// })
         console.log("")
-            console.log("")
-            console.log("MAP:")
-
+        console.log("MAP:")
+        console.log("")
+        
         this.map.forEach((array) => {
                      
             for (let i = 0; i < array.length; i++) {
@@ -228,9 +218,9 @@ const map = new Map()
 
 map.generateMap()
 map.spawn()
-// map.reset()
+map.reset()
 
 
-// map.spawn()
+
 
 module.exports = Map
