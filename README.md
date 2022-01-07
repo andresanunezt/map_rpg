@@ -37,3 +37,9 @@ EXTENSION:
 
 Create another script that will move the player throughout the map.
 Destroy all monsters to win!
+
+
+SCREENSHOTS
+![](spawn.png)
+
+![](monster_won.png)
