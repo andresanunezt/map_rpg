@@ -58,8 +58,8 @@ class Map {
         console.log("")
 
 
-        let characters = this.characters
-        let array = this.map
+            let characters = this.characters
+            let array = this.map
 
 
 
@@ -69,64 +69,26 @@ class Map {
 
                 let randomChar = characters[j]
 
-
-
                 if (array[randomNumber][randomNumber2].name === "M" && randomChar.name === "M") {
                     if (array[randomNumber].indexOf(0) !== -1){
                         let indexNum = array[randomNumber].indexOf(0)
-                        // console.log(indexNum) 
-                       array[randomNumber][indexNum] = randomChar
-                        // console.log("MONSTER COLLISION:",array[randomNumber][indexNum], randomChar )
-                    // } if (array[randomNumber].indexOf(0) == -1) {
-
-                    //     console.log("TEST:")
-                    //     console.log(array.forEach((arr) => {
-                    //         console.log(arr)
-                    //         arr.indexOf(0) 
-                    //     }))
-
-
+                        
+                       array[randomNumber][indexNum] = randomChar      
                     }
-                    
-                    // return array[randomNumber][indexNum] = randomChar
 
-                
-            }
-
-                
-              
-                
-                if (array[randomNumber][randomNumber2].name === "M" && randomChar.name === "P"){
+                } if (array[randomNumber][randomNumber2].name === "M" && randomChar.name === "P"){
                     this.collisionStatus = true
                     const monster = array[randomNumber][randomNumber2]
                     const player  = randomChar
                     const result  = this.battle(player, monster)
-                    // console.log(result)
-               
-                    array[randomNumber][randomNumber2] = result   
-                    // console.log("RESULT FROM ARRAY[ARRAY]",array[randomNumber][randomNumber2])
-                    // count++
                     
-                }  
-
-          
-                
-
-                
-                else {
-               
-                array[randomNumber][randomNumber2] = randomChar
-                // count++
-                
-                }
-
-                
-
+                     array[randomNumber][randomNumber2] = result   
+                    
+                    }  else {array[randomNumber][randomNumber2] = randomChar
+                    
+                        }
             }
                
-        
-        
-        
         console.log("")
         
         this.map.forEach((array) => {
@@ -137,9 +99,6 @@ class Map {
                                 array[i] = array[i].name
                 }
 
-                // if (array[i].name === 0){
-                //     array[i] = array[i]
-                // }
                     
             }
             
@@ -152,17 +111,14 @@ class Map {
     reset(){
     
         console.log("")
-        console.log("Map has been reset:")
+        console.log("!!!MAP HAS BEEN RESET!!!")
         console.log("")
 
             for (let i = 0; i < this.map.length; i++){
-                
-                let array = this.map
-                    
+                    let array = this.map
                     for (let j = 0; j < array[i].length; j++) {
                         array[i][j] = 0
-
-                }   
+                    }   
             }
         
         
@@ -172,10 +128,6 @@ class Map {
         })
 
         
-        
-
-
-    
     }
 
 
@@ -191,20 +143,15 @@ class Map {
         let monsters = []
 
         for(let i = 0; i < 6; i++) {
-
-            // monsters[i] = new Monster(`M${[i + 1]}`)
             monsters[i] = new Monster(`M`)
-            // console.log(monsters[i])
             this.characters.push(monsters[i])
         }
     }
 
 
     createPlayer(){
-
         const player = new Player("P");
         this.characters.push(player)        
-
     }
 
 
