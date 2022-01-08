@@ -26,7 +26,6 @@ class Map {
 
     generateMap() {
 
-
         const mapBlueprint = [
                                 [0, 0, 0, 0 ],
                                 [0, 0, 0, 0 ], 
@@ -62,48 +61,85 @@ class Map {
         let characters = this.characters
         let array = this.map
 
+
+
             for (let j = 0; j < characters.length; j++) {
-               
-                const randomNumber = Math.floor(Math.random() * 4)
+                const randomNumber  = Math.floor(Math.random() * 4)
                 const randomNumber2 = Math.floor(Math.random() * 4)
 
-                 
-                 let randomChar = characters[j]
+                let randomChar = characters[j]
 
+
+
+                if (array[randomNumber][randomNumber2].name === "M" && randomChar.name === "M") {
+                    if (array[randomNumber].indexOf(0) !== -1){
+                        let indexNum = array[randomNumber].indexOf(0)
+                        // console.log(indexNum) 
+                       array[randomNumber][indexNum] = randomChar
+                        // console.log("MONSTER COLLISION:",array[randomNumber][indexNum], randomChar )
+                    // } if (array[randomNumber].indexOf(0) == -1) {
+
+                    //     console.log("TEST:")
+                    //     console.log(array.forEach((arr) => {
+                    //         console.log(arr)
+                    //         arr.indexOf(0) 
+                    //     }))
+
+
+                    }
+                    
+                    // return array[randomNumber][indexNum] = randomChar
+
+                
+            }
+
+                
+              
+                
                 if (array[randomNumber][randomNumber2].name === "M" && randomChar.name === "P"){
+                    this.collisionStatus = true
                     const monster = array[randomNumber][randomNumber2]
-                    const player = randomChar
-
-                    const result = this.battle(player, monster)
+                    const player  = randomChar
+                    const result  = this.battle(player, monster)
+                    // console.log(result)
                
-                    array[randomNumber][randomNumber2] = result
+                    array[randomNumber][randomNumber2] = result   
+                    // console.log("RESULT FROM ARRAY[ARRAY]",array[randomNumber][randomNumber2])
+                    // count++
                     
-                   
-                    
-                    
-                } else {
+                }  
+
+          
+                
+
+                
+                else {
                
                 array[randomNumber][randomNumber2] = randomChar
+                // count++
                 
                 }
-            
-            }   
-        
 
-        console.log("")
-        console.log("MAP:")
+                
+
+            }
+               
+        
+        
+        
         console.log("")
         
         this.map.forEach((array) => {
-                     
-            for (let i = 0; i < array.length; i++) {
-
-
-                if (typeof array[i] === "object"){
-
-                        array[i] = array[i].name
-
+                     for (let i = 0; i < array.length; i++) {
+                        
+                        if (typeof array[i] === "object"){
+                            // console.log("INSIDE LOOP:", array[i].name)
+                                array[i] = array[i].name
                 }
+
+                // if (array[i].name === 0){
+                //     array[i] = array[i]
+                // }
                     
             }
             
@@ -116,7 +152,7 @@ class Map {
     reset(){
     
         console.log("")
-        console.log("reset")
+        console.log("Map has been reset:")
         console.log("")
 
             for (let i = 0; i < this.map.length; i++){
@@ -135,8 +171,8 @@ class Map {
             console.log(array)
         })
 
-        console.log("")
-        console.log("Map has been reset")
+        
+        
 
 
     
@@ -176,10 +212,10 @@ class Map {
 
         this.collisionStatus = true
         console.log("")
-        console.log("There's a colllision!")
+        console.log("THERE IS A COLLITION!")
         console.log("")
         console.log(`${player.name} and ${monster.name} are battling`)
-        console.log("")
+       
 
         const pAttack = player.randomAttack()
         const mAttack = monster.randomAttack()
@@ -187,22 +223,24 @@ class Map {
 
         if(pAttack.value > mAttack.value){
             console.log("")
-            console.log(`Player won the battle`)
-            console.log("")
+            console.log(`PLAYER WON THE BATTLE`)
+           
             return player
         }
 
         if(mAttack.value > pAttack.value){
             console.log("")
-            console.log(`Monster won the battle`)
+            console.log(`MONSTER WON THE BATTLE`)
             console.log("")
             return monster
         }
 
         if (mAttack.value === pAttack.value){
             console.log("")
-            console.log("it's a draw")
-            return 0
+            console.log("DRAW. BOTH PARTIES HAVE BEEN DESTORYED")
+            let zero = {name: 0}
+            return zero
+            // return 0
             console.log("")
 
         }
