@@ -186,7 +186,7 @@ class Map {
 
             console.log(`PLAYER HP = ${player.hp}`)
 
-            this.characters.splice(this.characters.findIndex(monster),1)
+            // this.characters.splice(this.characters.findIndex(monster),1)
           
            
             return player
