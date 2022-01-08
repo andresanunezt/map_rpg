@@ -3,4 +3,6 @@ const map = new Map()
 
 map.generateMap()
 map.spawn()
-map.reset()
+// map.spawn()
+// map.printMap()
+// map.reset()

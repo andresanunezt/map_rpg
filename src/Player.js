@@ -5,9 +5,9 @@ class Player {
         this.name = name,
         this.hp = 100,
          this.attacks = [
-                        {value: 25},
-                        {value: 50},
-                        {value: 75}            
+                        {name: "PUNCH",value: 25},
+                        {name: "SLAY", value: 50},
+                        {name: "DESTROY", value: 75}            
                         ]
     
     }

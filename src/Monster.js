@@ -5,9 +5,9 @@ class Monster {
         this.name = name,
         this.hp = 100,
         this.attacks = [
-                        {value: 25},
-                        {value: 50},
-                        {value: 75}            
+                        {name:"KICK",value: 25},
+                        {name:"BITE",value: 50},
+                        {name:"DESTROY",value: 75}            
                         ]
         Monster.all.push(this)
     

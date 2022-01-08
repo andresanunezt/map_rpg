@@ -39,29 +39,29 @@ class Map {
     
             });
 
-            console.log('')
+            console.log('--------------')
 
             this.map.forEach((array) => {
-            
                 console.log(array)
-            
             })
-
-            console.log('')
+            console.log('--------------')
 
     }
 
 
     spawn(){
-
-        console.log("Spawned")
+        
         console.log("")
+        console.log('--------------')
+        console.log("")
+        // console.log("")
+  
 
 
             let characters = this.characters
             let array = this.map
 
-
+         
 
             for (let j = 0; j < characters.length; j++) {
                 const randomNumber  = Math.floor(Math.random() * 4)
@@ -89,30 +89,34 @@ class Map {
                         }
             }
                
-        console.log("")
+        // console.log("")
+        
+        // console.log("")
+    
         
         this.map.forEach((array) => {
                      for (let i = 0; i < array.length; i++) {
-                        
                         if (typeof array[i] === "object"){
                             // console.log("INSIDE LOOP:", array[i].name)
-                                array[i] = array[i].name
-                }
+                            array[i] = array[i].name
+                     }
 
-                    
-            }
-            
-            
+                }
             console.log(array)
         })
+     
+        console.log("")
+        console.log('--------------')
+        console.log("")
+        console.log("")
 
     }
 
     reset(){
-    
+        console.log("")
         console.log("")
         console.log("!!!MAP HAS BEEN RESET!!!")
-        console.log("")
+        
 
             for (let i = 0; i < this.map.length; i++){
                     let array = this.map
@@ -121,7 +125,7 @@ class Map {
                     }   
             }
         
-        
+            console.log("")
         this.map.forEach((array) => {
                      
             console.log(array)
@@ -133,10 +137,11 @@ class Map {
 
 
     printMap() {
-
+       console.log( '--------------')
         this.map.forEach((array) => {
             console.log(array)
         })
+        console.log( '--------------')
     }
 
     createMonsters(){
@@ -158,19 +163,31 @@ class Map {
     battle(player,monster) {
 
         this.collisionStatus = true
-        console.log("")
+        
         console.log("THERE IS A COLLITION!")
         console.log("")
-        console.log(`${player.name} and ${monster.name} are battling`)
+        console.log(`${player.name} AND ${monster.name} ARE BATTLING!!!`)
        
 
         const pAttack = player.randomAttack()
         const mAttack = monster.randomAttack()
 
+        console.log(`${player.name} USED ${pAttack.name}`) 
+        
+        console.log(`${monster.name} USED ${mAttack.name}`)
+
 
         if(pAttack.value > mAttack.value){
             console.log("")
             console.log(`PLAYER WON THE BATTLE`)
+            console.log("")
+
+            player.hp -= mAttack.value
+
+            console.log(`PLAYER HP = ${player.hp}`)
+
+            this.characters.splice(this.characters.findIndex(monster),1)
+          
            
             return player
         }
@@ -179,16 +196,18 @@ class Map {
             console.log("")
             console.log(`MONSTER WON THE BATTLE`)
             console.log("")
+           
             return monster
         }
 
         if (mAttack.value === pAttack.value){
             console.log("")
             console.log("DRAW. BOTH PARTIES HAVE BEEN DESTORYED")
+            console.log("")
             let zero = {name: 0}
             return zero
             // return 0
-            console.log("")
+            
 
         }
 
